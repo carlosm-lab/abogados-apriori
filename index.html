@@ -175,6 +175,49 @@
             }
         }
     </script>
+    <style>
+        .small-scrollbar {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(119,90,25,0.7) transparent;
+        }
+        .small-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .small-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .small-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(119,90,25,0.7);
+            border-radius: 9999px;
+        }
+        .custom-scrollbar-track {
+            position: relative;
+            height: 4px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .custom-scrollbar-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 16%;
+            background: rgba(119,90,25,0.85);
+            border-radius: 9999px;
+            transition: left 0.2s ease, width 0.2s ease;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+    </style>
 </head>
 
 <body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
@@ -220,42 +263,100 @@
                     <h2 class="font-headline-md text-headline-md text-primary mb-4" id="servicios">Servicios</h2>
                     <div class="w-16 h-1 bg-secondary mx-auto"></div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-                    <!-- Area 1 -->
-                    <div
-                        class="bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform"
-                            style="font-variation-settings: 'FILL' 0;" aria-hidden="true">gavel</span>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Despacho Jurídico</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Asesoría y representación legal integral en derecho de familia, civil, penal y administrativo. Garantizamos el resguardo de sus derechos e intereses.</p>
+                <div class="mb-4 flex justify-end lg:hidden">
+                    <span class="text-[10px] text-black uppercase tracking-[0.25em]">Desliza →</span>
+                </div>
+                <div class="relative overflow-hidden">
+                    <div data-services-slider class="grid grid-flow-col auto-cols-[minmax(270px,320px)] gap-3 overflow-x-auto pb-6 pr-3 small-scrollbar scroll-smooth snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:grid-flow-row lg:auto-rows-max lg:overflow-x-visible lg:overflow-y-visible lg:max-h-none lg:pb-0 lg:pr-0 lg:snap-none lg:gap-6">
+                        <!-- Servicio 1 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">gavel</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Aceptaciones de herencia</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Gestión legal de herencias y sucesiones para proteger los derechos de los herederos y cumplir con las formalidades del proceso.</p>
+                        </div>
+                        <!-- Servicio 2 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">description</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Escrituras</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Redacción, autenticación y legalización de escrituras públicas para compraventas, poderes y otros actos jurídicos formales.</p>
+                        </div>
+                        <!-- Servicio 3 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">family_restroom</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Procesos familiares</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Divorcios, cuotas alimenticias e impugnaciones de paternidad con representación experta y enfoque estratégico.</p>
+                        </div>
+                        <!-- Servicio 4 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">support_agent</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Asesoría legal</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Orientación jurídica personalizada para consultas civiles, familiares, mercantiles y administrativas.</p>
+                        </div>
+                        <!-- Servicio 5 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">balance</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Procesos judiciales</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Litigios y representación en sede judicial para resolver conflictos con respaldo profesional y estratégico.</p>
+                        </div>
+                        <!-- Servicio 6 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">layers</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Trámites administrativos</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Gestión de diligencias ante alcaldías, ministerios, registros públicos y otras entidades del sector público.</p>
+                        </div>
+                        <!-- Servicio 7 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">business_center</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Creación de sociedades</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Constitución y formalización de sociedades, juntas directivas, actas y documentación mercantil completa.</p>
+                        </div>
+                        <!-- Servicio 8 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">how_to_reg</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Servicios notariales</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Actos notariales, autenticaciones, certificaciones y asesoría en actos de fe pública ante notario.</p>
+                        </div>
+                        <!-- Servicio 9 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">feed</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Elaboración de poderes</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Redacción y formalización de poderes especiales, generales y notariales para representación legal confiable.</p>
+                        </div>
+                        <!-- Servicio 10 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">bookmark_added</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Testamentos</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Asesoría y redacción de testamentos para asegurar la disposición clara del patrimonio y tranquilidad familiar.</p>
+                        </div>
+                        <!-- Servicio 11 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">child_friendly</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Reconocimiento voluntario de hijo</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Trámite jurídico para el reconocimiento voluntario de hijos, protegiendo derechos y estableciendo filiación.</p>
+                        </div>
+                        <!-- Servicio 12 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">airplanemode_active</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Autorización de salida del país de niños</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Gestión de permisos y documentación necesaria para la salida internacional de menores de edad.</p>
+                        </div>
+                        <!-- Servicio 13 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">directions_car</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Autorización de salida de vehículos</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Tramitamos permisos y certificados para la salida temporal o definitiva de vehículos del país.</p>
+                        </div>
+                        <!-- Servicio 14 -->
+                        <div class="snap-start bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
+                            <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">insert_drive_file</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Contratos</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Elaboración y revisión de contratos civiles, comerciales y laborales con enfoque preventivo y seguridad jurídica.</p>
+                        </div>
                     </div>
-                    <!-- Area 2 -->
-                    <div
-                        class="bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform"
-                            style="font-variation-settings: 'FILL' 0;" aria-hidden="true">work</span>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Abogado Corporativo</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Constitución de sociedades, estructuración mercantil, elaboración de contratos comerciales, asesoramiento preventivo y cumplimiento legal corporativo.</p>
-                    </div>
-                    <!-- Area 3 -->
-                    <div
-                        class="bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform"
-                            style="font-variation-settings: 'FILL' 0;" aria-hidden="true">receipt_long</span>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Servicios Contables</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Contabilidad general, auditoría, estados financieros, declaraciones de impuestos mensuales/anuales y consultoría contable fiscal especializada.</p>
-                    </div>
-                    <!-- Area 4 -->
-                    <div
-                        class="bg-surface p-8 border border-dashed border-outline-variant rounded-xl hover:shadow-[0_4px_20px_rgba(119,90,25,0.1)] transition-all duration-300 group cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform"
-                            style="font-variation-settings: 'FILL' 0;" aria-hidden="true">history_edu</span>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Asesoría y Trámites</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Elaboración y auténtica de escrituras, contratos de compraventa y trámites ágiles ante alcaldías, ministerios y registros públicos como el CNR.</p>
+                    <div class="mt-4 lg:hidden">
+                        <div class="custom-scrollbar-track">
+                            <div id="services-scroll-thumb" class="custom-scrollbar-thumb"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -648,6 +749,29 @@
             </div>
         </div>
     </footer>
+    <script>
+        const servicesSlider = document.querySelector('[data-services-slider]');
+        const servicesThumb = document.getElementById('services-scroll-thumb');
+
+        if (servicesSlider && servicesThumb) {
+            const updateThumb = () => {
+                const scrollWidth = servicesSlider.scrollWidth - servicesSlider.clientWidth;
+                if (scrollWidth <= 0) {
+                    servicesThumb.style.width = '100%';
+                    servicesThumb.style.left = '0%';
+                    return;
+                }
+                const widthPercent = Math.max(12, (servicesSlider.clientWidth / servicesSlider.scrollWidth) * 100);
+                const leftPercent = (servicesSlider.scrollLeft / scrollWidth) * (100 - widthPercent);
+                servicesThumb.style.width = `${widthPercent}%`;
+                servicesThumb.style.left = `${leftPercent}%`;
+            };
+
+            servicesSlider.addEventListener('scroll', updateThumb);
+            window.addEventListener('resize', updateThumb);
+            updateThumb();
+        }
+    </script>
 </body>
 
 </html>
